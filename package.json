@@ -1,0 +1,16 @@
+{
+  "name": "tw_graphql_vanilla",
+  "version": "0.0.1",
+  "description": "Tech watch on vanilla GraphQL",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "^0.12.3",
+    "graphql-tag": "^2.6.1",
+    "graphql-tools": "^2.16.0"
+  }
+}

@@ -1,0 +1,25 @@
+type Customer {
+  id: ID
+  name: String
+  lastName: String
+  mail: String
+}
+
+input CustomerInput {
+  name: String!
+  lastName: String!
+  mail: String!
+}
+
+type Query {
+  getCustomers: [Customer]
+}
+
+type Mutation {
+  addCustomer(customer: CustomerInput!): String
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
