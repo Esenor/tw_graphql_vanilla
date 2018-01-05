@@ -1,7 +1,8 @@
 const path = require('path')
 const fs = require('fs')
 
-const schemaName = 'schema.gql'
+const schemaPath = 'schema'
+const regex = /.gql/
 
 module.exports = {
   /**
@@ -10,7 +11,12 @@ module.exports = {
    */
   getSchemaDefinition: () => {
     try {
-      let typeDefs = fs.readFileSync(path.join(__dirname, schemaName), 'utf8')
+      let gqlFile = fs.readdirSync(path.join(__dirname, schemaPath))
+      let typeDefs = gqlFile.reduce((schemaDefinition, fileName) => {
+        if (regex.test(fileName)) {
+          return [schemaDefinition, fs.readFileSync(path.join(__dirname, schemaPath, fileName), 'utf8')].join('\n')
+        }
+      }, '')
       return {
         typeDefs
       }
