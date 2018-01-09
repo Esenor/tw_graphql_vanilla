@@ -9,7 +9,6 @@ module.exports = {
   getSchemaDefinition: (schemaPath = 'schema') => {
     try {
       let gqlFile = fs.readdirSync(path.join(__dirname, schemaPath))
-      console.log('!!! ---> Read file')
       let typeDefs = gqlFile.reduce((schemaDefinition, fileName) => {
         if (/.gql/.test(fileName)) {
           return [schemaDefinition, fs.readFileSync(path.join(__dirname, schemaPath, fileName), 'utf8')].join('\n')
